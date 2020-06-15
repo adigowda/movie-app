@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './App.css';
 import InputForm from './components/Form';
 import movieDetails from './components/MovieDetails';
+import 'react-circular-progressbar/dist/styles.css';
+import ImageWrapper, { TitleAndFacts } from './components/wrappers';
+import RatingsWrapper from './components/ratings';
 
 function App() {
 
@@ -15,30 +18,40 @@ function App() {
   const handleClick = async (event) => {
     event.preventDefault()
     let data = await movieDetails(inputVal)
-    setDetails([data])
+    if (!data.Error)
+      setDetails([data])
   }
-
 
   return (
     <div className="App">
       <InputForm inputVal={inputVal} handleChange={handleChange} handleClick={handleClick} />
       {
-        details.map(detail => {
-          const { Title, Year, Rated, Released, Runtime, Poster,Genre } = detail
+        details.map((detail, index) => {
+          const { Title, Year, Rated, Released, Runtime, Poster, Genre, Country, Ratings, totalSeasons,Plot } = detail
+
           return (
-            <div className='result'>
-              <div className='ContentWrapper'>
-                <div className='imageDiv'>
-                  <img src={Poster} />
-                </div>
+            <div className='result' key={index} >
+              <div className='ContentWrapper' >
+                <ImageWrapper Poster={Poster} />
                 <div className='infoWrapper'>
-                  <h2> {Title} <span> ({Year}) </span> </h2>
-                  <div className='factsWrapper'>
-                    <span className='rating fact'>{Rated}</span>
-                    <span className='fact'>{Released}</span>
-                    <span className='fact addDot'>{Genre}</span>
-                    <span className='fact addDot'>{Runtime}</span>
-                    </div>
+                  <TitleAndFacts Title={Title} Year={Year}
+                    Rated={Rated}
+                    Released={Released}
+                    Country={Country}
+                    Genre={Genre}
+                    Country={Country}
+                    Runtime={Runtime}
+                    totalSeasons={totalSeasons}
+                  />
+                  {
+                    Ratings.length >= 2 ? <RatingsWrapper imdbValue={Ratings[0].Value}
+                      rtnValue={parseInt(Ratings[1].Value) / 100} /> :
+                      Ratings.length == 1 ? <RatingsWrapper imdbValue={Ratings[0].Value} />
+                        : null
+                  }
+                  <div className="overview">
+                    {Plot}
+                  </div>
                 </div>
               </div>
             </div>
