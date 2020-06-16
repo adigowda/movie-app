@@ -63,7 +63,7 @@ form {
 }
 
 .infoWrapper {
-  padding: 1.5% 0 1.5% 3%;
+  padding: 1.5% 100px 1.5% 3%;
   color: #fff;
 }
 
@@ -86,11 +86,11 @@ form {
 }
 
 .addDot::before {
-    font-family: "Font Awesome 5 Free";
-    content: "\f111";
-    font-size: 10px;
-    font-weight: 700;
-    padding-right: 5px;
+  font-family: "Font Awesome 5 Free";
+  content: "\f111";
+  font-size: 10px;
+  font-weight: 700;
+  padding-right: 5px;
 }
 
 .ratings {
@@ -99,20 +99,57 @@ form {
   margin-top: 20px;
 }
 
-.ratings #rtn-tmts, .ratings #imdb {
+.ratings #rtn-tmts,
+.ratings #imdb {
   display: flex;
   align-items: center;
   margin-right: 20px;
 }
 
-#rtn-tmts div, #imdb div {
+#rtn-tmts div,
+#imdb div {
   margin-right: 5px;
 }
 
-#rtn-tmts p{
+#rtn-tmts p {
   text-align: center;
 }
 
 svg {
   cursor: default;
+}
+
+h4 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.know-more {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.know-more button {
+  display: inline-block;
+  outline: none;
+  border: none;
+  line-height: 1em;
+  letter-spacing: 0.06em;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #000;
+  background: #bac964;
+  padding: 15px 12px 15px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.know-more button:hover {
+  background: #000;
+  color: #fff;
+  transition: 0.6s;
+}
+
+.know-more img {
+  width: 45px;
 }
