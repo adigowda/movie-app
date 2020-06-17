@@ -18,9 +18,8 @@ function App() {
     <div className="App">
 
       <BrowserRouter>
-        {/* <InputForm inputVal={inputVal} handleChange={handleChange} /> */}
-        <Link to="/search">Search</Link>
-        <Route exact path="/search" component={MovieComponent} />
+        <InputForm inputVal={inputVal} handleChange={handleChange} />
+        <Route path="/search" component={MovieComponent} />
       </BrowserRouter>
     </div>
   );

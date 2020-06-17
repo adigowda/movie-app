@@ -1,26 +1,32 @@
-import React from 'react'
-import { Link, BrowserRouter } from "react-router-dom";
+import React, { useState } from 'react'
+import { Link, Redirect } from "react-router-dom";
 
-const InputForm = ({ inputVal, handleChange, handleClick }) => (
-    <div>
-        <form className="wrapper" onSubmit={(e) => e.preventDefault()} >
-            <input
-                value={inputVal}
-                onChange={(e) => handleChange(e)}
-                type="text"
-                className="input"
-                placeholder="Search for a movie..."
-            />
-            <button className='submitButton' type="submit">
-                <BrowserRouter>
-                    <Link to='/search' >
+const InputForm = ({ inputVal, handleChange }) => {
+    const [query, setQuery] = useState(``)
+    
+    const habdleSubmit = (e) => {
+        e.preventDefault();
+
+    }
+    return (
+        <div>
+            <form className="wrapper" onSubmit={(e) => habdleSubmit(e)} >
+                <input
+                    value={inputVal}
+                    onChange={(e) => { handleChange(e); setQuery(e.target.value.replace(' ','+')) }}
+                    type="text"
+                    className="input"
+                    placeholder="Search for a movie..."
+                />
+                <Link to={`/search/?movie=${query}`} >
+                    <button className='submitButton' type="submit">
                         <i className="fas fa-search fa-2x"></i>
-                    </Link>
-                </BrowserRouter>
-            </button>
-        </form>
+                    </button>
+                </Link>
+            </form>
 
-    </div>
-)
+        </div>
+    )
+}
 
 export default InputForm

@@ -2,7 +2,7 @@ import React from "react"
 
 const ImageWrapper = ({ Poster }) => (
     <div className='imageDiv'>
-        <img src={Poster} />
+        <img src={Poster} alt='poster' />
     </div>
 )
 

@@ -8,7 +8,7 @@ export const RatingsWrapper = ({ imdbValue, rtnValue }) => {
 
                 <div id="imdb">
                     <div>
-                        <img src="https://img.icons8.com/color/48/000000/imdb.png" />
+                        <img src="https://img.icons8.com/color/48/000000/imdb.png" alt='imdb' />
                     </div>
                     <p> {imdbValue} </p>
                 </div>
@@ -21,7 +21,7 @@ export const RatingsWrapper = ({ imdbValue, rtnValue }) => {
 
                 <div id="imdb">
                     <div>
-                        <img src="https://img.icons8.com/color/48/000000/imdb.png" />
+                        <img src="https://img.icons8.com/color/48/000000/imdb.png" alt='imdb' />
                     </div>
                     <p> {imdbValue} </p>
                 </div>

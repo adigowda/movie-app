@@ -153,3 +153,7 @@ h4 {
 .know-more img {
   width: 45px;
 }
+
+form a i {
+  margin-top: 10px;
+}
