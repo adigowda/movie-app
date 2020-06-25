@@ -1,25 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import InputForm from './components/Form';
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import MovieComponent from './components/movieComponent';
 import 'react-circular-progressbar/dist/styles.css';
 
 function App() {
 
-  const [inputVal, setInputVal] = useState(``)
-
-
-  const handleChange = (event) => {
-    setInputVal(event.target.value)
-  }
-
   return (
     <div className="App">
 
       <BrowserRouter>
-        <InputForm inputVal={inputVal} handleChange={handleChange} />
-        <Route path="/search" component={MovieComponent} />
+        <InputForm  />
+        <Route path="/search/:title" component={MovieComponent} />
       </BrowserRouter>
     </div>
   );

@@ -6,16 +6,18 @@ import axios from 'axios'
 import 'react-circular-progressbar/dist/styles.css';
 import movieDetails from '../components/MovieDetails';
 
-const MovieComponent = ({ location }) => {
+const MovieComponent = ({ match }) => {
 
     const [loading, setloading] = useState(false)
     const [details, setDetails] = useState([])
     const [Plot, setPlot] = useState('')
     const [knowMore, setKnowMore] = useState(true)
 
-    const query = new URLSearchParams(location.search)
-    let movie = query.get('movie')
-    movie = movie.replace(' ', '+')
+
+    let movie = match.params.title
+    if (movie) {
+        movie = movie.split('-').join(' ')
+    }
 
     async function fetchData() {
         if (movie !== null) {
@@ -43,7 +45,6 @@ const MovieComponent = ({ location }) => {
             setloading(false)
         }, 800);
     }
-
     return (
         details.map((detail, index) => {
             const { Title, Year, Rated, Released, Runtime, Poster, Genre, Country, Ratings, totalSeasons } = detail
